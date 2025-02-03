@@ -4,3 +4,7 @@ Notes/
 **/house-prices**
 **/titanic**
 **/*.gguf
+**/*.wav
+**/*.env
+**/custom-speaker-embeddings/
+**/*.npy
