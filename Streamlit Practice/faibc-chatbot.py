@@ -1,17 +1,21 @@
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
 import streamlit as st
 from streamlit_chat import message
-from transformers import pipeline
+from llama_cpp import Llama
 
 from itertools import zip_longest
 
 
-pipe = pipeline("text-generation", "HuggingFaceH4/zephyr-7b-beta")
-chat = lambda messages: pipe(messages, max_new_tokens=120)[0]
+# using a lightweight model for testing
+llm = Llama(model_path='./phi-2.Q2_K.gguf', chat_format='llama-2')
+chat = lambda messages: llm.create_chat_completion(messages=messages)
 
 def gen_response(query):
     messages = [
         {"role": "system",
-         "content": """Your name is AI Chatbot. You are a technical expert for Artificial Intelligence (AI), here to guide and assist students with their AI-related questions and concerns. Please provide accurate and helpful information, and always maintain a polite and professional tone
+        "content": """Your name is AI Chatbot. You are a technical expert for Artificial Intelligence (AI), here to guide and assist students with their AI-related questions and concerns. Please provide accurate and helpful information, and always maintain a polite and professional tone
         1. Greet the user harshly, ask user's name and ask how they are doing
         2. Provide informative responses
         3. Avoid discussing sensitive and offensive topics
@@ -31,7 +35,8 @@ def gen_response(query):
             messages.append({"role":"assistant", "content":ai})
     
     messages.append({"role":"user", "content":query})
-    return chat(messages)['generated_text'][-1]
+    
+    return chat(messages)['choices'][0]['message']['content']
 
 def submit():
     st.session_state['prompt'] = st.session_state['prompt_input']
