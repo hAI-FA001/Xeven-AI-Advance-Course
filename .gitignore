@@ -8,3 +8,5 @@ Notes/
 **/*.env
 **/custom-speaker-embeddings/
 **/*.npy
+**/PASCAL VOC/
+**/speaker-embedding/
