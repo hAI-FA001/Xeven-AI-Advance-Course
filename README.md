@@ -6,7 +6,7 @@ Find the course playlist at <a href="https://youtube.com/playlist?list=PLxf3-FrL
 - Coding Assignments: Assignment solutions
 - Streamlit Practice: WebApps for chatbots
   - Chatbot from AI Basic Course
-  - DocumentGPT with DeepSeek, RAG with FAISS and Chat history
+  - `DocumentGPT` with `DeepSeek` via `Ollama`, RAG with `FAISS` and Chat history with `LangChaun`
   - Text-to-Speech synthesis codes
-- TF/Torch Rough: TensorFlow and PyTorch codes as practice
+- TF/Torch Rough: `TensorFlow` and `PyTorch` codes as practice
 - Tasks - Exercises: Solution of exercises and tasks in lectures
